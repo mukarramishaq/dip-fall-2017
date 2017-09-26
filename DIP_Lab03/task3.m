@@ -1,36 +1,44 @@
-%%%%%%%%%%%%%%%%%Author%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%FreqTableuthor%%%%%%%%%%%%%%%%
 %%%%%	Mukarram Ishaq
 %%%%%	32381
-%%%%%	BESE5A
+%%%%%	BESE5FreqTable
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- cameramanImg = imread ('cameraman.tif');
+ tireImg = imread ('tire.tif');
  
- builtinHistogram = imhist(cameramanImg);
- histImg= histeq(cameramanImg);
- builtinEhistogram= imhist(histImg);
- r = size(cameramanImg,1);
- c = size(cameramanImg,2);
- A= zeros(1,256);
+ %builtin histogram
+ bIH = imhist(tireImg);
+
+ %equalized Histogram
+ equalizedHist= histeq(tireImg);
+
+ %built In equlaized histogram
+ bIEHist= imhist(equalizedHist);
+ 
+ r = size(tireImg,1);
+ c = size(tireImg,2);
+ FreqTable= zeros(1,256);
  for j=1:r
    for x=1:c
-       v=cameramanImg(j,x);
-       A(v+1)=A(v+1)+1;
+       value=tireImg(j,x);
+       FreqTable(value+1)=FreqTable(value+1)+1;
    end
  end
+
    for y=1:256
-     pmf(y)= ((A(y))/(r*c));
+     p(y)= ((FreqTable(y))/(r*c));
    end
-   cdf(1)=pmf(1);
+   cumDF(1)=p(1);
+
    for y=2:256
-        cdf(y) = cdf(y-1)+ pmf(y);
+        cumDF(y) = cumDF(y-1)+ p(y);
    end
      for b=1:256
-       T(b)=cdf(b)*255;
+       T(b)=cumDF(b)*255;
       end
 
     for j=1:r
         for x=1:c
-            I4(j,x) =T(cameramanImg(j,x));
+            Eq(j,x) =T(tireImg(j,x));
 
          end
     end
@@ -38,26 +46,17 @@
 
 
 
-   myEquilizedHistogram= imhist(I4);
+   nowEqHist= imhist(Eq);
 
 
 
   figure
-  subplot(3,2,1)
-   imagesc(cameramanImg),title('Orignal image')
-  subplot(3,2,2)
-  plot(builtinHistogram)
-  title('Built in Histogram')
-
- subplot(3,2,3)
- imagesc(histImg),title('Built in Equilized image')
+  subplot(1,2,1);
+  plot(bIEHist)
+  title('Equalized through Built In func');
  
-  subplot(3,2,4)
-  plot(builtinEhistogram)
-  title('Built in Equilized histogram')
-
-  subplot(3,2,5)
-  imagesc(I4),title('My equilized image')
-  subplot(3,2,6)
-   plot( myEquilizedHistogram),title('My equilized Histogram')
+  subplot(1,2,2)
+  plot(nowEqHist),title('My equilized Histogram')
+  title('My Equilized Histogram')
+   
    
