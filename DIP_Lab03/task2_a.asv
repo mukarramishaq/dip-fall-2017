@@ -1,0 +1,34 @@
+cameramanImg = im2double(imread('cameraman.tif'));
+
+
+a = 20;
+b = 2;
+c = 0.9;
+
+shiftedImg = 1+cameramanImg;
+
+
+
+
+subplot(2,4,1);
+imshow(cameramanImg);
+title('Original');
+
+
+subplot(2,4,2);
+loggedImg = log(shiftedImg);
+newAImg = a * loggedImg;
+imshow(a*log(1+cameramen))
+title(strcat(num2str(a),'*log(1+original)'));
+
+subplot(2,4,3);
+loggedImg = logm(shiftedImg);
+newBImg = b * loggedImg;
+imshow(newBImg)
+title(strcat(num2str(b),'*log(1+original)'));
+
+subplot(2,4,4);
+loggedImg = logm(shiftedImg);
+newCImg = c * loggedImg;
+imshow(newCImg)
+title(strcat(num2str(c),'*log(1+original)'));

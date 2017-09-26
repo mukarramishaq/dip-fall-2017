@@ -1,0 +1,21 @@
+cameramanImg = imread('cameraman.tif');
+tireImg = imread('tire.tif');
+a = 0.5;
+b = 5;
+c = 
+newCameraManImg = a*cameramanImg;
+newTireImg = a* tireImg;
+
+subplot(2,4,1);
+imshow(cameramanImg);
+title('original Image');
+subplot(2,4,2);
+imshow(newCameraManImg);
+title(strcat(num2str(a),'* original Image'));
+
+subplot(2,4,3);
+imshow(tireImg);
+title('original Image');
+subplot(2,4,4);
+imshow(newTireImg);
+title(strcat(num2str(a),'* original Image'));
