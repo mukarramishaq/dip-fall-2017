@@ -1,1 +1,0 @@
-camermanImg = imread('cameraman.tif');
