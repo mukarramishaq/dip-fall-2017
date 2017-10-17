@@ -1,0 +1,12 @@
+Question 1​: What is the effect of using the wrong sign when filtering with the contra harmonic
+mean ​ ​filter?
+
+
+If R is positive then pepper noise is removed if R is negative then salt noise is removed.If for removing pepper noise R is chosen negative instead of positive, the numerator value will become smaller than 1 and the overall result move towards zero. In this way the black parts i.e the pepper noise will increase instead of decreasing. Similar is the case with Salt noise.
+
+
+Question 2: ​Why do you think the median filter works on salt and pepper noise but not Gaussian
+noise?
+
+
+Gaussian noise  is distributed by a uniform PDF. So median filter is not a good opetion as it selects the middle values. In case of salt and pepper the noise is in form of peaks so median filter can work there.
