@@ -223,3 +223,18 @@ title(' on speckle');
 subplot(2,3,6);
 imshow(nlfilter(im2double(spnI),[3 3],geoFunc));
 title(' on salt & pepper');
+
+
+
+%%% Contra Harmonic
+figure();
+subplot(3,2,1),imshow(Contra_HarmonicMeanFilter(gaussianI,2,3)),title('Contra Harmonic Mean Gaussian');
+subplot(3,2,2),imshow(Contra_HarmonicMeanFilter(poissonI,2,3)),title('Contra Harmonic Mean Poisson');
+
+subplot(3,2,3),imshow(Contra_HarmonicMeanFilter(spnI,2,3)),title('Contra Harmonic Mean Salt and Pepper');
+subplot(3,2,4),imshow(Contra_HarmonicMeanFilter(speckleI,2,3)),title('Contra Harmonic Mean Speckle');
+subplot(3,2,5),imshow(Contra_HarmonicMeanFilter(ponI,2,3)),title('Contra Harmonic Mean Pepper');
+subplot(3,2,6),imshow(Contra_HarmonicMeanFilter(sonI,2,3)),title('Contra Harmonic Mean Salt');
+
+
+
