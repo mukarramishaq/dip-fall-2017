@@ -1,0 +1,16 @@
+%%%
+%Author: Mukarram Ishaq
+%Class:  BESE-5A
+%CMS ID: 111134
+%%%
+
+img = imread('text.png');
+dImg = im2double(img);
+binImg = imbinarize(dImg);
+cc = bwconncomp(~binImg);
+for i = 1:cc.NumObjects
+    newImg = false(size(binImg));
+    newImg(cc.PixelIdxList{i}) = true;
+    newI
+    imwrite(newImg,sprintf('C:/Users/mishaq.bese14seecs/Desktop/DIP-Lab7/sep_ch/%d.png',i));
+end
